@@ -42,5 +42,9 @@ class Inventario {
     		aModificar.setCantidadEnInventario(cantidad);
     	}
     }
+
+    public void nuevo(){
+        
+    }
     
 }
