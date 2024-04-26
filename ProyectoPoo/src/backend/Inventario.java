@@ -44,7 +44,7 @@ class Inventario {
     }
 
     public void nuevo(){
-        
+       System.out.println("hola"); 
     }
     
 }
