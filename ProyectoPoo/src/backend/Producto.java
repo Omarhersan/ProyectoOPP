@@ -5,17 +5,16 @@ public class Producto {
 	private String nombreProducto;
 	private int cantidadEnInventario;
 	private double precio;
-	private double costo;
 	
 	public Producto() {
 		
 	}
 	
-	public Producto(String nombreProducto,int cantidadEnInventario, double precio, double costo) {
+	public Producto(String nombreProducto,int cantidadEnInventario, double precio) {
 		this.nombreProducto = nombreProducto;
 		this.cantidadEnInventario = cantidadEnInventario;
 		this.precio = precio;
-		this.costo = costo;
+		
 	}
 	
 	
@@ -53,13 +52,6 @@ public class Producto {
 		this.precio = precio;
 	}
 
-	public double getCosto() {
-		return costo;
-	}
-
-	public void setCosto(double costo) {
-		this.costo = costo;
-	}
 
 	@Override
 	public String toString() {
