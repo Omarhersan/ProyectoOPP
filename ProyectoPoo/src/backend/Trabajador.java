@@ -5,13 +5,17 @@ public class Trabajador extends Persona{
 
 
 	public Trabajador(String nombre, int ocupación) {
+		// Debe abrir una base de datos
 		super(nombre, ocupación);
 		
 	}
 	
 	// Debe ser void, pero para debugging será String
+	// Se extrae la información de producto desde afuera
 	public String Compra(int idProducto, int cantidad,double paga) {
-		// extraer precio del producto
+		//El producto se extrae desde inventario
+		
+		
 		double precioProducto = 10.0;
 		double totalACobrar = cantidad*precioProducto;
 		if (paga-totalACobrar >=0)

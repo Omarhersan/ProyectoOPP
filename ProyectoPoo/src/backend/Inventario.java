@@ -5,8 +5,9 @@ import java.util.*;
 
 
 class Inventario {
-    HashMap<Integer,Producto> items;
 
+	
+    HashMap<Integer, Producto> items;
     public Inventario() {
         items = new HashMap<>();
     }
@@ -37,10 +38,15 @@ class Inventario {
     }
 
     public void updateItem(int idProducto, int cantidad) {
+    	// No debe haber cantidades negativas
+    	// Cada cuanto sobreescribir la db??
     	if(items.containsKey(idProducto)) {
     		Producto aModificar = items.get(idProducto);
     		aModificar.setCantidadEnInventario(cantidad);
     	}
+    }
+    public Producto getItem(int idProducto){
+    	return items.get(idProducto);
     }
     
 }
