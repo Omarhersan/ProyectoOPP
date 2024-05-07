@@ -4,7 +4,9 @@ public class Producto {
 	private int idProducto;
 	private String nombreProducto;
 	private int cantidadEnInventario;
+	private String sCantidadEnInventario;
 	private double precio;
+	private String sPrecio;
 	
 	public Producto() {
 		
@@ -14,6 +16,13 @@ public class Producto {
 		this.nombreProducto = nombreProducto;
 		this.cantidadEnInventario = cantidadEnInventario;
 		this.precio = precio;
+		
+	}
+	
+	public Producto(String nombreProducto,String cantidadEnInventario, String precio) {
+		this.nombreProducto = nombreProducto;
+		this.sCantidadEnInventario = cantidadEnInventario;
+		this.sPrecio = precio;
 		
 	}
 	
