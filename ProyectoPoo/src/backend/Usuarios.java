@@ -61,7 +61,7 @@ public class Usuarios extends Persona {
 			return true;
 		}
 		else
-			System.out.println(this.username);
+			System.out.println();
 			return false;
 	}
 	
