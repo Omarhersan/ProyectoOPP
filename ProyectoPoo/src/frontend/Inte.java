@@ -1,18 +1,35 @@
 package frontend;
+import frontend.utils.*;
 
-import backend.*;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.io.IOException;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Inte extends JFrame implements ActionListener {
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+
+import backend.Inventario;
+import backend.Usuarios;
+
+
+
+public class Inte extends JFrame{
     private static JLabel encabezado;
     private static JLabel etiquetaID;
     private static JTextField campoTextoID;
     private static JLabel etiquetaContra;
     private static JTextField campoTextoContra;
-    private JButton boton;
+
     
     // Variables globales del backend
     Inventario inv = new Inventario();
@@ -59,19 +76,32 @@ public class Inte extends JFrame implements ActionListener {
         panelContra.add(etiquetaContra);
         panelContra.add(campoTextoContra);
 
-        //Boton
-        boton = new JButton("Ingresar");
-        boton.setSize(300, 80);
-        boton.setFont(new Font("Arial", Font.BOLD, 14)); 
-        boton.setBackground(Color.BLACK); 
-        boton.setForeground(Color.WHITE);
+        //Boton_Inicial
+        JButton botonIngreso = new Button("Ingresar").getButton();
+        botonIngreso.addActionListener(new ActionListener() {
+        	@Override
+			public void actionPerformed(ActionEvent e) {
+				if (e.getSource() == botonIngreso) {
+		            if ((LogIn(campoTextoID, campoTextoContra)) == true){
+		            	// Falta implementar el siguiente panel
+
+		            }
+		            else{
+		                JOptionPane.showMessageDialog(null, "Acceso Incorrecto", "Incorrecto", JOptionPane.WARNING_MESSAGE);
+		                campoTextoID.setText("");
+		                campoTextoContra.setText("");
+		            }
+				}
+				}
+
+        });
 
         //
         JPanel panelCompleto = new JPanel(new GridLayout(5, 1));
         panelCompleto.add(encabezado);
         panelCompleto.add(panelID);
         panelCompleto.add(panelContra);
-        panelCompleto.add(boton);
+        panelCompleto.add(botonIngreso, BorderLayout.SOUTH);
         
         // Añadir componentes al marco
         this.add(panelCompleto);
@@ -81,26 +111,16 @@ public class Inte extends JFrame implements ActionListener {
         Inte frame = new Inte();
         frame.setVisible(true);
     }
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == boton) {
-            if ((LogIn(campoTextoID, campoTextoContra)) == true){
-
-            }
-            else{
-                JOptionPane.showMessageDialog(null, "Acceso Incorrecto", "Incorrecto", JOptionPane.WARNING_MESSAGE);
-                campoTextoID.setText("");
-                campoTextoContra.setText("");
-            }
-        }
-        // PARA LOS BOTONES
-    }
+    
 
     //Esto no sé que es, pero me lo genero para poder usar el metodo LogIn aqui arriba
     private boolean LogIn(JTextField campoTextoID2, JTextField campoTextoContra2) {
+    	
     	try {
-			users.LogIn(campoTextoID2, campoTextoContra2);
-			System.out.println("Correcto");
-			return true;
+    		if(users.LogIn(campoTextoID2, campoTextoContra2))
+    			return true;
+    		else
+    			return false;
 		}
 		catch(Exception e){
 			e.getStackTrace();

@@ -16,12 +16,12 @@ public class Usuarios extends Persona {
 	
 	public Usuarios() {
 		parseCSV("C:\\Users\\omara\\Documents\\Proyecto_OPP\\ProyectoPoo\\src\\backend\\Data\\users.csv");
-		System.out.println("Inicializado usuarios");
 	}
 	
 	// Extraer nombre y ocupación de los csv
 	public Usuarios(String nombre, int ocupación, String password) {
 		super(nombre, ocupación);
+		this.username = nombre;
 		this.password = password;
 		
 	}
@@ -55,11 +55,14 @@ public class Usuarios extends Persona {
         }
 	
 	}
-	public String LogIn(JTextField username,JTextField password) {
-		if(this.username == username.getText() && this.password == password.getText())
-			return "Acceso permitido";
+	public boolean LogIn(JTextField username,JTextField password) {
+		if(this.username == username.getText() && this.password == password.getText()) {
+			System.out.println("Fue correcto");
+			return true;
+		}
 		else
-			return "Acceso no permitido";
+			System.out.println(this.username);
+			return false;
 	}
 	
 }
