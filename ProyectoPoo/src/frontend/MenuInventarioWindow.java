@@ -3,6 +3,7 @@ package frontend;
 import backend.Inventario;
 import backend.Producto;
 import java.util.*;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
@@ -30,12 +31,11 @@ public class MenuInventarioWindow extends Component {
 	public MenuInventarioWindow(LocalFrame localFrame) {
 		int numI = items.size();
 		
-		panelPrueba = new JPanel();
-		labelPrueba = new JLabel("Prueba");
-		
-		panelPrueba.add(labelPrueba);
-		
         panelInventario = new JPanel(new GridLayout(numI, 3));
+        //JLabel encabezado = new JLabel("Inventario");
+        
+        //panelInventario.add(encabezado, BorderLayout.NORTH);
+        
         
         columns = new JPanel(new GridLayout(1,3));
         columns.setBackground(Color.GRAY);
@@ -43,7 +43,7 @@ public class MenuInventarioWindow extends Component {
         columns.add(new JLabel("Cantidad en Inventario"));
         columns.add(new JLabel("Precio"));
         
-        panelInventario.add(columns);
+        panelInventario.add(columns, BorderLayout.CENTER);
         
         for (int i = 1; i < numI; i++) {
             JPanel itemP = new JPanel(new GridLayout(1, 3));
@@ -64,7 +64,7 @@ public class MenuInventarioWindow extends Component {
             productP.setFont(new Font("Arial", Font.BOLD, 16));
             itemP.add(productP);
     
-            panelInventario.add(itemP);
+            panelInventario.add(itemP, BorderLayout.CENTER);
         }
 	}
 	

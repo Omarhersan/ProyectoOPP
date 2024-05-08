@@ -54,6 +54,7 @@ public class MenuWindow extends Component{
 	    	public void actionPerformed(ActionEvent e) {
 	    		if(e.getSource() == botonVenta) {
 	    			menuVenta = new MenuVenta(localFrame);
+	    			localFrame.runVenta(menuVenta);
 	    		}
 	    		else {
 	                JOptionPane.showMessageDialog(null, "Acceso Incorrecto", "Incorrecto", JOptionPane.WARNING_MESSAGE);

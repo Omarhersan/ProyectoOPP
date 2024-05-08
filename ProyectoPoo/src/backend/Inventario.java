@@ -56,6 +56,7 @@ public class Inventario {
     public HashMap<Integer, Producto> getItems(){
     	return this.items;
     }
+    
 }
 
 

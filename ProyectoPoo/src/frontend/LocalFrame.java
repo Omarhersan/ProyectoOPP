@@ -63,6 +63,20 @@ public class LocalFrame extends JFrame {
         
         this.show();
 	}
+	
+	public void runVenta(MenuVenta menuVenta) {
+		window = new JFrame();
+		window.setTitle("InVent-Venta");
+        window.setSize(500, 300);
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setLocationRelativeTo(null);
+        window.setLayout(new BorderLayout(5, 1));
+        
+        window.add(menuVenta.getPanelVenta(), BorderLayout.CENTER);
+        window.add(menuVenta.getPanelBotonVenta(), BorderLayout.SOUTH);
+        this.show();
+
+	}
 		
 		
 		
