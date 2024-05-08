@@ -68,7 +68,7 @@ public class LogInWindow extends Component {
 		            if ((LogIn(campoTextoID, campoTextoContraseña)) == true){
 		            	// Falta implementar el siguiente panel
 		            	logedIn = true;
-		            	menu = new MenuWindow();
+		            	menu = new MenuWindow(localFrame);
 		            	localFrame.runMenu(menu);
 
 		            }

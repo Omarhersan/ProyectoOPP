@@ -17,7 +17,7 @@ public class LocalFrame extends JFrame {
 	public LocalFrame() {
 		runMain();
 	}
-	public void runMain(LocalFrame this) {
+	public void runMain() {
 		// Log In Window
 		main = new LogInWindow(this);
 		
@@ -35,7 +35,7 @@ public class LocalFrame extends JFrame {
 	}
 	
 	public void runMenu(LocalFrame this, MenuWindow menu) {
-		this.window.dispatchEvent(new WindowEvent(window, WindowEvent.WINDOW_CLOSING));
+		//this.window.dispatchEvent(new WindowEvent(window, WindowEvent.WINDOW_CLOSING));
 		window = new JFrame();
 		window.setTitle("InVent-Menú");
         window.setSize(500, 300);
@@ -46,6 +46,22 @@ public class LocalFrame extends JFrame {
         window.add(menu.getPanelMenu(), BorderLayout.CENTER);
         this.show();
         
+	}
+	
+	public void runInventario(LocalFrame this, MenuInventarioWindow menuInventario) {
+		//this.window.dispatchEvent(new WindowEvent(window, WindowEvent.WINDOW_CLOSING));
+		window = new JFrame();
+		window.setTitle("InVent-Inventario");
+        window.setSize(500, 300);
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setLocationRelativeTo(null);
+        window.setLayout(new BorderLayout(5, 1));
+        //this.show();
+        
+    
+        window.add(menuInventario.getPanelInventario(), BorderLayout.CENTER);
+        
+        this.show();
 	}
 		
 		

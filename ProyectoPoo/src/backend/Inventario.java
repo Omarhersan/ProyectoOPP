@@ -5,11 +5,10 @@ import java.util.*;
 
 
 public class Inventario {
-
-	
-    HashMap<Integer, Producto> items;
+    private HashMap<Integer, Producto> items;
+    
     public Inventario() {
-        items = new HashMap<>();
+        items = new HashMap<Integer, Producto>();
         parseCSV("C:\\Users\\omara\\Documents\\Proyecto_OPP\\ProyectoPoo\\src\\backend\\Data\\Productos.csv");
     }
 
@@ -26,6 +25,7 @@ public class Inventario {
                 	item[0] = item[0].substring(1);
                 items.put(Integer.parseInt(item[0]), new Producto(item[1],
                 		Integer.parseInt(item[2]),Double.parseDouble(item[3])));
+                
             }
             
         } catch (IOException e) {
@@ -53,7 +53,9 @@ public class Inventario {
     public Producto getItem(int idProducto){
     	return items.get(idProducto);
     }
-    
+    public HashMap<Integer, Producto> getItems(){
+    	return this.items;
+    }
 }
 
 
