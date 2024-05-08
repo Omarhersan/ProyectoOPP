@@ -29,9 +29,12 @@ public class LogInWindow extends Component {
 	private static JTextField campoTextoID;
 	private static JTextField campoTextoContraseña;
 	
-	Usuarios users = new Usuarios();
+	private boolean logedIn = false;
+	private MenuWindow menu;
 	
-	public LogInWindow() {	
+	HashMap<String, Usuarios> users = new Usuarios().getUsers();
+	
+	public LogInWindow(LocalFrame localFrame) {	
 		encabezadoPanel = new JPanel();
 		ingresoDeDatosPanel = new JPanel();
 		panelBotonIngreso = new JPanel();
@@ -64,6 +67,9 @@ public class LogInWindow extends Component {
 				if (e.getSource() == botonIngreso) {
 		            if ((LogIn(campoTextoID, campoTextoContraseña)) == true){
 		            	// Falta implementar el siguiente panel
+		            	logedIn = true;
+		            	menu = new MenuWindow();
+		            	localFrame.runMenu(menu);
 
 		            }
 		            else{
@@ -97,17 +103,22 @@ public class LogInWindow extends Component {
 	
 	private boolean LogIn(JTextField campoTextoID2, JTextField campoTextoContra2) {
     	try {
-    		if(users.LogIn(campoTextoID2, campoTextoContra2))
+    		if(users.get(campoTextoID2.getText()).LogIn(campoTextoID2, campoTextoContra2))
     			return true;
     		else
     			return false;
 		}
 		catch(Exception e){
 			e.getStackTrace();
-			System.out.println("Incorrecto");
 			return false;
 		}
            	
         
     }
+	public boolean getLogedIn() {
+		return this.logedIn;
+	}
+	public MenuWindow getMenu() {
+		return this.menu;
+	}
 }

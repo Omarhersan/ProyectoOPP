@@ -7,11 +7,11 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class Usuarios extends Persona {
-	String username;
-	String password;
+	private String username;
+	private String password;
 	
 	
-	protected HashMap<Integer, Persona> users = new HashMap<>();
+	protected HashMap<String, Usuarios> users = new HashMap<>();
 
 	
 	public Usuarios() {
@@ -47,7 +47,9 @@ public class Usuarios extends Persona {
                 	ocupacion = Persona.ADMINISTRADOR;
                 else
                 	ocupacion = Persona.NOT_DEFINED;
-                users.put(Integer.parseInt(user[0]), new Usuarios(user[1], ocupacion, user[3]));
+                users.put(user[1], new Usuarios(user[1], ocupacion, user[3]));
+                
+                
             }
             
         } catch (IOException e) {
@@ -56,14 +58,21 @@ public class Usuarios extends Persona {
 	
 	}
 	public boolean LogIn(JTextField username,JTextField password) {
-		if(this.username == username.getText() && this.password == password.getText()) {
-			System.out.println("Fue correcto");
+		if(this.getUsername().equals(username.getText())&& this.getPassword().equals(password.getText())) {
 			return true;
 		}
 		else
 			System.out.println();
 			return false;
 	}
-	
+	public String getUsername() {
+		return this.username;
+	}
+	public String getPassword() {
+		return this.password;
+	}
+	public HashMap<String, Usuarios> getUsers(){
+		return this.users;
+	}
 }
 		

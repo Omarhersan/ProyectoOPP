@@ -4,31 +4,56 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.WindowEvent;
 
 
-public class localFrame {
+public class LocalFrame extends JFrame {
 	private JPanel encabezadoPanel;
 	private JPanel ingresoDeDatosPanel;
 	private JFrame window;
 	private LogInWindow main;
+	private MenuWindow menu;
 	
-	public localFrame() {
+	public LocalFrame() {
+		runMain();
+	}
+	public void runMain(LocalFrame this) {
 		// Log In Window
+		main = new LogInWindow(this);
+		
 		window = new JFrame();
 		window.setTitle("InVent");
 		window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		window.setSize(500, 300);
 		window.setLocationRelativeTo(null);
 		window.setLayout(new BorderLayout(5, 1));
-		
-		main = new LogInWindow();
-		
+					
 		window.add(main.getEncabezadoPanel(), BorderLayout.NORTH);
 		window.add(main.getIngresoDeDatosPanel(), BorderLayout.CENTER);
 		window.add(main.getPanelBotonIngreso(), BorderLayout.SOUTH);
 		
-		
 	}
+	
+	public void runMenu(LocalFrame this, MenuWindow menu) {
+		this.window.dispatchEvent(new WindowEvent(window, WindowEvent.WINDOW_CLOSING));
+		window = new JFrame();
+		window.setTitle("InVent-Menú");
+        window.setSize(500, 300);
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setLocationRelativeTo(null);
+        window.setLayout(new BorderLayout(5, 1));
+        
+        window.add(menu.getPanelMenu(), BorderLayout.CENTER);
+        this.show();
+        
+	}
+		
+		
+		
+		
+		
+		
+	
 	
 	public void show() {
 		window.setVisible(true);

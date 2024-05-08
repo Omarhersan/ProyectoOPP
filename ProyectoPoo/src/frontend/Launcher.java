@@ -11,7 +11,7 @@ public class Launcher {
 
 			@Override
 			public void run() {
-				localFrame frame = new localFrame();
+				LocalFrame frame = new LocalFrame();
 				frame.show();
 				
 			}
@@ -21,3 +21,5 @@ public class Launcher {
 	}
 
 }
+
+
