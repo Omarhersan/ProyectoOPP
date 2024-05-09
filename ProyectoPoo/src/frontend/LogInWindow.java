@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
@@ -27,7 +28,7 @@ public class LogInWindow extends Component {
 	private static JLabel etiquetaContraseña;
 	
 	private static JTextField campoTextoID;
-	private static JTextField campoTextoContraseña;
+	private static JPasswordField campoTextoContraseña;
 	
 	private boolean logedIn = false;
 	private MenuWindow menu;
@@ -54,7 +55,7 @@ public class LogInWindow extends Component {
 	    etiquetaContraseña = new JLabel("Ingresa tu contraseña:");
 	    etiquetaContraseña.setFont(new Font("Arial", Font.BOLD, 16));
 	
-	    campoTextoContraseña = new JTextField(20);
+	    campoTextoContraseña = new JPasswordField(20);
 	    campoTextoContraseña.setFont(new Font("Arial", Font.PLAIN, 14));
 	    
 		
@@ -101,7 +102,7 @@ public class LogInWindow extends Component {
 		return this.panelBotonIngreso;
 	}
 	
-	private boolean LogIn(JTextField campoTextoID2, JTextField campoTextoContra2) {
+	private boolean LogIn(JTextField campoTextoID2, JPasswordField campoTextoContra2) {
     	try {
     		if(users.get(campoTextoID2.getText()).LogIn(campoTextoID2, campoTextoContra2))
     			return true;

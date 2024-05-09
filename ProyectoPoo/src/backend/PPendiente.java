@@ -4,7 +4,7 @@ public class PPendiente {
     protected String nombre;
     protected double deuda;
 
-  public PPendiente(String nombre, int deuda) {
+  public PPendiente(String nombre, double deuda) {
 		this.nombre = nombre;
     this.deuda = deuda;		
 	}

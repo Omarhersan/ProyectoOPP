@@ -71,12 +71,13 @@ public class MenuVenta extends Component{
 			}
 			
 		});
-
-		JButton botonPendiente = new Button("Venta").getButton();
+ 
+		// Boton Pendiente
+		JButton botonPendiente = new Button("Pendiente").getButton();
 		botonPendiente.addActionListener(new ActionListener() {
 
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {				
 				if(e.getSource() == botonPendiente) {
 					int idProducto = Integer.parseInt(campoTextoIdVenta.getText());
 					Producto producto = inventario.get(idProducto);
@@ -96,13 +97,23 @@ public class MenuVenta extends Component{
 					else {
 						double total = producto.getPrecio()*cantidadAComprar;
 						JOptionPane.showMessageDialog(null, "El total a pagar es: " + total,
-								"Venta realizada", JOptionPane.INFORMATION_MESSAGE);
-						producto.setCantidadEnInventario(producto.getCantidadEnInventario() - cantidadAComprar);
+								"Venta", JOptionPane.INFORMATION_MESSAGE);
+						
 						Nombre = JOptionPane.showInputDialog(null, "Ingresa el nombre a anotar:");
 						PagosPendientes pagoPendiente = new PagosPendientes();
 						List<PPendiente> pendientes = pagoPendiente.lecPendientes();
-						pagoPendiente.actualizarDeuda(Nombre, total);
-						pagoPendiente.sobrescribirCSV();
+						if(pagoPendiente.validarNombre(Nombre)) {
+							producto.setCantidadEnInventario(producto.getCantidadEnInventario() - cantidadAComprar);
+							pagoPendiente.actualizarMasDeuda(Nombre, total);
+							pagoPendiente.sobrescribirCSV();
+							JOptionPane.showMessageDialog(null, "Se anotó a nombre de: " + Nombre, "Venta realizada", JOptionPane.INFORMATION_MESSAGE);
+						} 
+						
+						
+						
+						
+						
+						
 					}					
 				}
 			}
@@ -116,7 +127,7 @@ public class MenuVenta extends Component{
 		panelVenta.add(campoTextoCantidadVenta);
 		
 		panelBotonVenta.add(botonVenta, BorderLayout.SOUTH);
-		
+		panelBotonVenta.add(botonPendiente, BorderLayout.SOUTH);		
 		
 		
 		
@@ -128,5 +139,5 @@ public class MenuVenta extends Component{
 	public JPanel getPanelBotonVenta() {
 		return this.panelBotonVenta;
 	}
-
+	
 }

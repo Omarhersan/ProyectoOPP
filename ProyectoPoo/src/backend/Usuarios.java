@@ -1,6 +1,8 @@
 package backend;
 
 import java.io.BufferedReader;
+
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import java.io.FileReader;
 import java.io.IOException;
@@ -15,7 +17,9 @@ public class Usuarios extends Persona {
 
 	
 	public Usuarios() {
-		parseCSV("C:\\Users\\sarim\\Documents\\6to semestre\\Proyecto\\ProyectoOPP\\ProyectoPoo\\src\\backend\\Data\\users.csv");
+		//parseCSV("C:\\Users\\sarim\\Documents\\6to semestre\\Proyecto\\ProyectoOPP\\ProyectoPoo\\src\\backend\\Data\\users.csv");
+		parseCSV("C:\\Users\\omara\\Documents\\Proyecto_OPP\\ProyectoPoo\\src\\backend\\Data\\users.csv");
+	
 	}
 	
 	// Extraer nombre y ocupación de los csv
@@ -57,8 +61,8 @@ public class Usuarios extends Persona {
         }
 	
 	}
-	public boolean LogIn(JTextField username,JTextField password) {
-		if(this.getUsername().equals(username.getText())&& this.getPassword().equals(password.getText())) {
+	public boolean LogIn(JTextField username,JPasswordField password) {
+		if(this.getUsername().equals(username.getText())&& this.getPassword().equals(String.valueOf(password.getPassword()))) {
 			return true;
 		}
 		else

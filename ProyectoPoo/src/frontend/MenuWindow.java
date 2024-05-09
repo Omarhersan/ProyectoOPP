@@ -1,5 +1,6 @@
 package frontend;
 
+import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -14,7 +15,7 @@ import javax.swing.SwingConstants;
 import frontend.utils.*;
 
 public class MenuWindow extends Component{
-	JPanel panelMenu = new JPanel();
+	JPanel panelMenu = new JPanel(new BorderLayout());
 	JLabel encabezadoMenu;
 	JButton botonInventario = new Button("Inventario").getButton();
 	JButton botonVenta = new Button("Venta").getButton();
@@ -61,24 +62,30 @@ public class MenuWindow extends Component{
 	                JOptionPane.showMessageDialog(null, "Acceso Incorrecto", "Incorrecto", JOptionPane.WARNING_MESSAGE);
 	                
 	            }
+	    	}
+	    	});
+	    // Boton Pagos Pendientes
 		botonPagosPendientes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == botonPagosPendientes) {
 					menuPagosPendientes = new MenuPagosPendientes(localFrame);
+					localFrame.runPagosPendientes(menuPagosPendientes);
 				}
+			}
 
-	    	}
+
 	    });
 	    
 	    
 	    
 	    // Adding to pane
-	    panelMenu.setLayout(new BoxLayout(panelMenu, BoxLayout.Y_AXIS));
-	    panelMenu.add(encabezadoMenu);
+	    //panelMenu.setLayout(new BoxLayout(panelMenu, BoxLayout.PAGE_AXIS));
+	    panelMenu.add(encabezadoMenu, BorderLayout.NORTH);
+	    panelMenu.setLayout(new BoxLayout(panelMenu, BoxLayout.PAGE_AXIS));
 	    panelMenu.add(botonInventario);
 	    panelMenu.add(botonVenta);
 	    panelMenu.add(botonPagosPendientes);
-	    panelMenu.add(botonCorte);
+	    //panelMenu.add(botonCorte);
 	
 	    }
 	public JPanel getPanelMenu() {
