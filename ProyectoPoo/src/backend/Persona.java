@@ -8,6 +8,8 @@ public abstract class Persona {
 	public static final int TRABAJADOR = 0;
 	public static final int ENCARGADO = 1;
 	public static final int CLIENTE = 2;
+	public static final int ADMINISTRADOR = 3;
+	public static final int NOT_DEFINED = 4;
 	
 	public Persona() {
 		
